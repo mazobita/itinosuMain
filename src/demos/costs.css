@@ -1,0 +1,84 @@
+.cd {
+  & .ss-stage {
+    overflow: hidden;
+  }
+
+  /* The list card runs off the stage's foot (a bled crop, under a fade) */
+  .cd-col {
+    position: absolute;
+    inset: 0 0 -72px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  /* The list runs out under a soft foot, so a new row pushes the last one
+     down and out rather than the card growing */
+  .cd-list {
+    --ss-fade: 48px;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+    padding: 12px 16px 0;
+    border-radius: var(--itn-radius-lg);
+    background: var(--bg-grouped-secondary);
+  }
+
+  .cd-row {
+    display: grid;
+    grid-template-columns: 32px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 0.5px solid var(--separator-opaque);
+    will-change: transform;
+  }
+
+  .cd-list > :first-child .cd-row {
+    padding-top: 0;
+  }
+
+  /* Bars sit in the real row's line boxes, so a filler row keeps its pitch */
+  .cd-row--filler .cd-row__text {
+    gap: 10px;
+    padding-block: 6px;
+  }
+
+  .cd-badge {
+    width: 32px;
+    height: 32px;
+    border-radius: 9px;
+  }
+
+  .cd-row__text {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  .cd-row__name {
+    overflow: hidden;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: -0.23px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .cd-row__sub {
+    font-size: 13px;
+    line-height: 18px;
+    letter-spacing: -0.08px;
+    color: var(--text-secondary);
+  }
+
+  .cd-row__amount {
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: -0.23px;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+}

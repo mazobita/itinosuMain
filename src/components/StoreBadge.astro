@@ -1,0 +1,66 @@
+---
+// PLACEHOLDER, as in the Figma file: replace with Apple's official localised
+// badge artwork from Apple Marketing Tools before launch. Never animate or
+// redraw the real badge. Both badges open the same universal-purchase product.
+interface Props {
+  store?: 'app' | 'mac'
+}
+const { store = 'app' } = Astro.props
+const APP_STORE_URL = 'https://apps.apple.com/app/itinosu'
+---
+
+<a class="store-badge" href={APP_STORE_URL} aria-label={store === 'mac' ? 'Download on the Mac App Store' : 'Download on the App Store'}>
+  <span class="store-badge__logo" aria-hidden="true">{"\uF8FF"}</span>
+  <span class="store-badge__label">
+    <span class="store-badge__small">Download on the</span>
+    <span class="store-badge__big">{store === 'mac' ? 'Mac App Store' : 'App Store'}</span>
+  </span>
+</a>
+
+<style>
+  .store-badge {
+    display: inline-flex;
+    flex: none;
+    align-items: center;
+    gap: var(--itn-space-8);
+    min-height: 48px;
+    padding: var(--itn-space-8) var(--itn-space-16);
+    border: 1px solid var(--separator-opaque);
+    border-radius: var(--itn-radius-sm);
+    background: #000;
+    color: #fff;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .store-badge:focus-visible {
+    outline: 2px solid var(--itn-brand-tint);
+    outline-offset: 2px;
+  }
+
+  /* The Apple logo glyph, as in the Figma placeholder (shows on Apple devices) */
+  .store-badge__logo {
+    flex: none;
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 1;
+  }
+
+  .store-badge__label {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .store-badge__small {
+    font-size: 11px;
+    line-height: 13px;
+    letter-spacing: 0.06px;
+  }
+
+  .store-badge__big {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 25px;
+    letter-spacing: -0.45px;
+  }
+</style>

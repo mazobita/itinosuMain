@@ -1,0 +1,163 @@
+.hd {
+  & .ss-stage {
+    --badge-empty: #d9d6cf;
+    --arrive: cubic-bezier(0.25, 0.8, 0.25, 1);
+  }
+
+  /* The Figma hero visual: TripCard, then two tiles, 12pt apart */
+  .hd-col {
+    position: absolute;
+    inset: 0 0 auto 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .hd-tiles {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  /* An empty tile's badge and its filled one share one slot: the filled
+     badge is what the flyer hands over to, so it shows in the same frame
+     the flyer goes, with no fade between them */
+  .hd-slot {
+    position: relative;
+    display: grid;
+    width: 36px;
+    height: 36px;
+  }
+
+  .hd-slot > .itn-badge {
+    grid-area: 1 / 1;
+  }
+
+  .hd-badge-empty {
+    color: var(--text-secondary);
+    transition: opacity 0.3s ease;
+  }
+
+  .hd-badge-full {
+    visibility: hidden;
+  }
+
+  .itn-tile[data-filled] .hd-badge-full {
+    visibility: visible;
+  }
+
+  .itn-tile[data-filled] .hd-badge-empty {
+    opacity: 0;
+  }
+
+  /* The empty tile's words sit quieter; filling brings them up with the count */
+  .itn-tile .itn-tile__title {
+    color: var(--text-secondary);
+    transition: color 0.35s ease;
+  }
+
+  .itn-tile[data-filled] .itn-tile__title {
+    color: var(--label-primary);
+  }
+
+  /* ---------- The "Add to trip" sheet, over the cover's sky ---------- */
+
+  .hd-sheet {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    width: 232px;
+    padding: 12px 12px 4px;
+    border-radius: 16px;
+    background: var(--bg-grouped-secondary);
+    box-shadow:
+      0 0 0 0.5px rgba(0, 0, 0, 0.06),
+      0 10px 28px -8px rgba(60, 40, 20, 0.35);
+    opacity: 0;
+    transform: translateY(-10px);
+    will-change: transform;
+    transition:
+      opacity 0.3s ease,
+      transform 0.45s cubic-bezier(0.45, 0, 0.1, 1);
+  }
+
+  .hd-sheet[data-in] {
+    opacity: 1;
+    transform: none;
+    transition:
+      opacity 0.5s ease,
+      transform 0.85s var(--arrive);
+  }
+
+  .hd-sheet__head {
+    padding-bottom: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 18px;
+    letter-spacing: -0.08px;
+    color: var(--text-secondary);
+  }
+
+  .hd-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 8px;
+  }
+
+  .hd-row__lead {
+    display: grid;
+    flex: none;
+  }
+
+  /* The badge has left on the flyer */
+  .hd-row__lead[data-sent] {
+    visibility: hidden;
+  }
+
+  .hd-row__text {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  .hd-row__name {
+    overflow: hidden;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: -0.23px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .hd-row__sub {
+    overflow: hidden;
+    font-size: 13px;
+    line-height: 18px;
+    letter-spacing: -0.08px;
+    color: var(--text-secondary);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  & .ss-stage[data-layout='compact'] .hd-sheet {
+    width: 214px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .hd .ss-stage {
+    --badge-empty: #3a3a3c;
+  }
+
+  .hd .hd-sheet {
+    background: #2c2c2e;
+    box-shadow:
+      0 0 0 0.5px rgba(255, 255, 255, 0.08),
+      0 10px 28px -8px rgba(0, 0, 0, 0.7);
+  }
+}

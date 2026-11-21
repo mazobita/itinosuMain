@@ -1,0 +1,150 @@
+@import './tokens.css';
+
+/* Page rules keep out of the stageshow stages, whose kit parts own their geometry */
+:where(*, *::before, *::after):not(:where(.ss-stage, .ss-stage *)) {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--itn-brand-canvas);
+  color: var(--label-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Prose and layout rules stay out of the stageshow stages */
+:where(h1, h2, h3, p):not(:where(.ss-stage *)) {
+  margin: 0;
+}
+
+img:not(:where(.ss-stage *)) {
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+/* ---------- Layout: desktop 1440 (160 side), iPad 834 (48), iPhone 402 (24) ---------- */
+
+.wrap {
+  width: 100%;
+  max-width: calc(1120px + 2 * var(--side));
+  margin: 0 auto;
+  padding-inline: var(--side);
+}
+
+:root {
+  --side: 160px;
+  --section-y: 96px;
+}
+
+@media (max-width: 1279px) {
+  :root {
+    --side: 48px;
+    --section-y: 48px;
+  }
+}
+
+@media (max-width: 743px) {
+  :root {
+    --side: 24px;
+    --section-y: 40px;
+  }
+}
+
+/* ---------- Type styles from the Figma library ---------- */
+
+.eyebrow {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: -0.08px;
+  text-transform: uppercase;
+  color: var(--itn-brand-tint);
+}
+
+.section-title {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 44px;
+  letter-spacing: -0.26px;
+}
+
+@media (max-width: 1279px) {
+  .section-title {
+    font-size: 22px;
+    line-height: 28px;
+  }
+}
+
+.title-3 {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 25px;
+  letter-spacing: -0.45px;
+}
+
+.body {
+  font-size: 17px;
+  line-height: 22px;
+  letter-spacing: -0.43px;
+  color: var(--text-secondary);
+}
+
+.subhead {
+  font-size: 15px;
+  line-height: 20px;
+  letter-spacing: -0.23px;
+  color: var(--text-secondary);
+}
+
+/* ---------- Scroll reveal for the static parts (demos animate themselves) ---------- */
+
+[data-scroll-in] {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.7s ease var(--delay, 0s),
+    transform 0.9s cubic-bezier(0.25, 0.8, 0.25, 1) var(--delay, 0s);
+}
+
+[data-scroll-in].is-in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-scroll-in] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Without JS nothing stays hidden */
+.no-js [data-scroll-in] {
+  opacity: 1;
+  transform: none;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}

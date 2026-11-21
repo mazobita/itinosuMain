@@ -1,0 +1,34 @@
+---
+// The Itinosu app icon: the "i + paper plane" mark on the brand canvas.
+// Light and dark artwork are the Figma exports; the corner is iOS's 22.5%.
+interface Props {
+  size: number
+}
+const { size } = Astro.props
+const light = size > 48 ? '/img/logo-light-96.svg' : '/img/logo-light.svg'
+---
+
+<span class="app-icon" style={`--size:${size}px`}>
+  <picture>
+    <source srcset="/img/logo-dark.svg" media="(prefers-color-scheme: dark)" />
+    <img src={light} width={size} height={size} alt="" />
+  </picture>
+</span>
+
+<style>
+  .app-icon {
+    display: block;
+    flex: none;
+    width: var(--size);
+    height: var(--size);
+    overflow: hidden;
+    border-radius: calc(var(--size) * 0.225);
+    background: var(--itn-brand-canvas);
+  }
+
+  .app-icon img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+</style>

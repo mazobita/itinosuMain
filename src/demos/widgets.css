@@ -1,0 +1,167 @@
+.wd {
+  .wd-card {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 16px 16px 0;
+    border-radius: var(--itn-radius-lg);
+    background: var(--bg-grouped-secondary);
+  }
+
+  .wd-strip-head {
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 18px;
+    letter-spacing: -0.08px;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+  }
+
+  /* The trip's widgets, in list order. One leaving closes its width so its
+     neighbours slide over; one arriving opens its room as it fades in */
+  .wd-strip {
+    display: flex;
+    height: 52px;
+    padding: 10px 0 12px;
+    overflow: hidden;
+    border-bottom: 0.5px solid var(--separator-opaque);
+  }
+
+  .wd-mini {
+    display: grid;
+    flex: none;
+    grid-template-columns: 0fr;
+    margin-right: 0;
+    opacity: 0;
+    transition:
+      grid-template-columns 0.45s cubic-bezier(0.45, 0, 0.1, 1),
+      margin-right 0.45s cubic-bezier(0.45, 0, 0.1, 1),
+      opacity 0.2s ease;
+  }
+
+  .wd-mini[data-on] {
+    grid-template-columns: 1fr;
+    margin-right: 8px;
+    opacity: 1;
+    transition:
+      grid-template-columns 0.45s cubic-bezier(0.45, 0, 0.1, 1),
+      margin-right 0.45s cubic-bezier(0.45, 0, 0.1, 1),
+      opacity 0.25s ease 0.3s;
+  }
+
+  .wd-mini__clip {
+    min-width: 0;
+    overflow: hidden;
+    border-radius: var(--itn-radius-full);
+  }
+
+  .wd-mini__inner {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    width: max-content;
+    height: 30px;
+    padding: 0 10px 0 4px;
+    border-radius: var(--itn-radius-full);
+    background: var(--itn-brand-canvas);
+    white-space: nowrap;
+    will-change: transform;
+  }
+
+  .wd-mini__badge {
+    width: 22px;
+    height: 22px;
+    border-radius: 999px;
+  }
+
+  .wd-mini__name {
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 18px;
+    letter-spacing: -0.08px;
+  }
+
+  .wd-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .wd-row {
+    display: grid;
+    grid-template-columns: 30px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+  }
+
+  .wd-row + .wd-row {
+    border-top: 0.5px solid var(--separator-opaque);
+  }
+
+  .wd-badge {
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+  }
+
+  .wd-row__name {
+    font-size: 17px;
+    line-height: 22px;
+    letter-spacing: -0.43px;
+  }
+
+  /* Phone column: the strip's chips tighten so three fit whole */
+  & .ss-stage[data-layout='compact'] .wd-mini__inner {
+    gap: 4px;
+    height: 26px;
+    padding: 0 8px 0 3px;
+  }
+
+  & .ss-stage[data-layout='compact'] .wd-mini__badge {
+    width: 20px;
+    height: 20px;
+  }
+
+  & .ss-stage[data-layout='compact'] .wd-mini__name {
+    font-size: 12px;
+    letter-spacing: 0;
+  }
+
+  & .ss-stage[data-layout='compact'] .wd-mini[data-on] {
+    margin-right: 6px;
+  }
+
+  /* The kit's Toggle at iOS size, in the brand tint */
+  .wd-toggle {
+    width: 51px;
+    height: 31px;
+    border-radius: 16px;
+    background: var(--wd-track-off, #e9e9ea);
+  }
+
+  .wd-toggle[data-on] {
+    background: var(--itn-brand-tint);
+  }
+
+  .wd-toggle .ss-toggle__knob {
+    width: 27px;
+    height: 27px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15), 0 3px 1px rgba(0, 0, 0, 0.06);
+  }
+
+  .wd-toggle[data-on] .ss-toggle__knob {
+    transform: translateX(20px);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .wd .wd-toggle {
+    --wd-track-off: #39393d;
+  }
+
+  .wd .wd-mini__inner {
+    background: #2c2c2e;
+  }
+}

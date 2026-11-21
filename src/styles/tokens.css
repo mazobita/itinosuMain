@@ -1,0 +1,85 @@
+/* Itinosu design tokens, from the Figma variables of "10 Landing"
+   (light and dark modes). Dark follows prefers-color-scheme. */
+
+:root {
+  color-scheme: light dark;
+
+  /* Brand */
+  --itn-brand-canvas: #fbf7ee;
+  --itn-brand-canvas-line: #e6ddc8;
+  --itn-brand-card: #ffffff;
+  --itn-brand-tint: #0b6b70;
+  --itn-brand-tint-pressed: #08555a;
+  --itn-brand-on-tint: #ffffff;
+  --itn-state-selected-bg: #e0f1f0;
+
+  /* Status and feedback */
+  --itn-status-upcoming: #0a5bbe;
+  --itn-status-upcoming-bg: #e2edfb;
+  --itn-feedback-info: #0a5bbe;
+  --itn-feedback-info-bg: #e2edfb;
+
+  /* System (iOS) */
+  --label-primary: #000000;
+  --text-secondary: #56524c;
+  --label-tertiary: rgba(60, 60, 67, 0.3);
+  --separator-opaque: #c6c6c8;
+  --bg-grouped-secondary: #ffffff;
+  --accent-blue: #0088ff;
+  --accent-orange: #ff8d28;
+  --accent-indigo: #6155f5;
+  --accent-pink: #ff2d55;
+  --accent-green: #34c759;
+  --accent-teal: #00c3d0;
+
+  /* Device bezel in the Devices section */
+  --device-bezel: #1c1c1f;
+
+  /* Space */
+  --itn-space-4: 4px;
+  --itn-space-8: 8px;
+  --itn-space-12: 12px;
+  --itn-space-16: 16px;
+  --itn-space-24: 24px;
+  --itn-space-32: 32px;
+  --itn-space-40: 40px;
+  --itn-space-48: 48px;
+
+  /* Radius */
+  --itn-radius-sm: 10px;
+  --itn-radius-md: 14px;
+  --itn-radius-lg: 20px;
+  --itn-radius-full: 999px;
+
+  /* Type: SF Pro on Apple devices, the closest system face elsewhere */
+  --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Helvetica Neue', 'Segoe UI', Roboto, Arial, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --itn-brand-canvas: #14110c;
+    --itn-brand-canvas-line: #2e281e;
+    --itn-brand-card: #1f1b15;
+    --itn-brand-tint: #5cc8c4;
+    --itn-brand-tint-pressed: #4ab3af;
+    --itn-brand-on-tint: #00302f;
+    --itn-state-selected-bg: #0f2e2d;
+
+    --itn-status-upcoming: #6eaeff;
+    --itn-status-upcoming-bg: #10203a;
+    --itn-feedback-info: #6eaeff;
+    --itn-feedback-info-bg: #10203a;
+
+    --label-primary: #ffffff;
+    --text-secondary: #b4afa6;
+    --label-tertiary: rgba(235, 235, 245, 0.3);
+    --separator-opaque: #38383a;
+    --bg-grouped-secondary: #1c1c1e;
+    --accent-blue: #0091ff;
+    --accent-orange: #ff9230;
+    --accent-indigo: #6d7cff;
+    --accent-pink: #ff375f;
+    --accent-green: #30d158;
+    --accent-teal: #00d2e0;
+  }
+}

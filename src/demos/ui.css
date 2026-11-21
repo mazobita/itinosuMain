@@ -1,0 +1,204 @@
+/* Itinosu components inside the stageshow stages. Sizes are the Figma
+   components' own (iOS points), colors the page tokens. */
+
+.itn-demo .ss-stage [class^='itn-'],
+.itn-demo .ss-stage [class^='itn-'] * {
+  box-sizing: border-box;
+}
+
+.itn-demo .ss-stage {
+  --ss-font: var(--font-sans);
+  --ss-accent: var(--itn-brand-tint);
+  --ss-accent-2: var(--itn-brand-tint);
+  --ss-accent-soft: var(--itn-state-selected-bg);
+  --ss-surface: var(--bg-grouped-secondary);
+  --ss-radius-lg: 20px;
+  font-family: var(--font-sans);
+  color: var(--label-primary);
+  background: transparent;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- TripCard ---------- */
+
+.itn-trip {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: var(--itn-radius-lg);
+  background: var(--bg-grouped-secondary);
+}
+
+.itn-trip__cover {
+  display: block;
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.itn-trip__body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+}
+
+.itn-trip__title-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.itn-trip__title {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 28px;
+  letter-spacing: -0.26px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.itn-trip__more {
+  display: flex;
+  flex: none;
+  justify-content: flex-end;
+  width: 44px;
+  height: 44px;
+  color: var(--itn-brand-tint);
+}
+
+.itn-trip__dates {
+  font-size: 15px;
+  line-height: 20px;
+  letter-spacing: -0.23px;
+  color: var(--text-secondary);
+}
+
+.itn-trip__footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.itn-pill {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  border-radius: var(--itn-radius-full);
+  background: var(--itn-status-upcoming-bg);
+  color: var(--itn-status-upcoming);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: -0.08px;
+}
+
+.itn-trip__where {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  font-size: 13px;
+  line-height: 18px;
+  letter-spacing: -0.08px;
+  color: var(--text-secondary);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ---------- TripWidgetTile ---------- */
+
+.itn-tile {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+  min-height: 120px;
+  padding: 16px;
+  border-radius: var(--itn-radius-lg);
+  background: var(--bg-grouped-secondary);
+}
+
+.itn-tile__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.itn-tile__chev {
+  flex: none;
+  /* Labels/Tertiary over the card, as one opaque color */
+  color: var(--chev, #c4c4c7);
+}
+
+@media (prefers-color-scheme: dark) {
+  .itn-tile__chev {
+    --chev: #5a5a5f;
+  }
+}
+
+.itn-tile__title {
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 22px;
+  letter-spacing: -0.43px;
+}
+
+.itn-tile__detail {
+  font-size: 15px;
+  line-height: 20px;
+  letter-spacing: -0.23px;
+  color: var(--text-secondary);
+}
+
+.itn-badge {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--itn-radius-sm);
+  background: var(--badge);
+  color: #fff;
+}
+
+/* ---------- ExpenseSummary ---------- */
+
+.itn-expense {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px;
+  border-radius: var(--itn-radius-lg);
+  background: var(--bg-grouped-secondary);
+}
+
+.itn-eyebrow-muted {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: -0.08px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.itn-expense__total {
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 41px;
+  letter-spacing: 0.4px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.itn-expense__meta {
+  font-size: 13px;
+  line-height: 18px;
+  letter-spacing: -0.08px;
+  color: var(--text-secondary);
+}

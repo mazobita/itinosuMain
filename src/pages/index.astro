@@ -1,0 +1,823 @@
+---
+import Base from '../layouts/Base.astro'
+import AppIcon from '../components/AppIcon.astro'
+import StoreBadge from '../components/StoreBadge.astro'
+import HeroDemo from '../demos/HeroDemo'
+import CostsDemo from '../demos/CostsDemo'
+import SummaryDemo from '../demos/SummaryDemo'
+import WidgetsDemo from '../demos/WidgetsDemo'
+import FlightsTiles from '../demos/FlightsTiles'
+import { CircleCheck, CreditCard, FileSearch, Info, Plane } from 'lucide-react'
+
+// itinosu.com: the public landing page (Figma "10 Landing"). Static HTML;
+// the four stageshow demos hydrate when they scroll into view.
+
+const included = ['Unlimited trips', 'Attach tickets, visas and booking confirmations', 'Photos for every widget', 'Itinosu in 6 languages', 'Download all your data']
+// The checkmark.circle.fill glyph: the stageshow kit's filled "check" path
+const CHECK_FILL = 'M8 1.25a6.75 6.75 0 1 1 0 13.5 6.75 6.75 0 0 1 0-13.5Zm3 4.3-.95-.8-3.3 3.95-1.85-1.8-.85.9 2.8 2.75Z'
+---
+
+<Base
+  title="Itinosu — every booking, ticket and plan in one tidy trip"
+  description="Itinosu keeps the flights, stays, visas and costs you already booked in one place, so the right document is ready when you need it — on iPhone, iPad and Mac."
+>
+  <header class="header wrap">
+    <a class="brand" href="/" aria-label="Itinosu home">
+      <AppIcon size={32} />
+      <span class="brand__name">Itinosu</span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="#features">Features</a>
+      <a class="nav__devices" href="#devices">iPhone, iPad &amp; Mac</a>
+      <a href="#pricing">Pricing</a>
+    </nav>
+    <a class="get-app" href="https://apps.apple.com/app/itinosu">Get the app</a>
+  </header>
+
+  <main>
+    <!-- 10.01 Hero -->
+    <section class="hero wrap">
+      <div class="hero__text">
+        <p class="eyebrow">Your travel organiser</p>
+        <h1 class="hero__title">Every booking, ticket and plan — in one tidy trip.</h1>
+        <p class="hero__lead">
+          Itinosu keeps the flights, stays, visas and costs you already booked in one place, so the right document is ready when you need it — on
+          iPhone, iPad and Mac.
+        </p>
+        <div class="hero__actions">
+          <StoreBadge />
+          <span class="hero__mac"><StoreBadge store="mac" /></span>
+          <span class="subhead">Free for 5 days</span>
+        </div>
+      </div>
+      <div class="hero__visual">
+        <HeroDemo client:visible />
+      </div>
+    </section>
+
+    <!-- 10.02 Features -->
+    <section id="features" class="features wrap">
+      <div class="heading" data-scroll-in>
+        <p class="eyebrow">What it does</p>
+        <h2 class="section-title">Built for the trip you already booked</h2>
+      </div>
+      <div class="feature-grid">
+        <article class="feature feature--flights">
+          <div class="feature__text" data-scroll-in>
+            <span class="symbol"><Plane size={22} strokeWidth={2} /></span>
+            <h3 class="title-3">Everything for the trip, together</h3>
+            <p class="body">
+              Flights and boarding passes, stays, visas, insurance, transport passes, places, activities and notes live inside the trip they belong to.
+            </p>
+          </div>
+          <FlightsTiles />
+        </article>
+
+        <article class="feature feature--costs">
+          <div class="feature__text" data-scroll-in>
+            <span class="symbol"><CreditCard size={22} strokeWidth={2} /></span>
+            <h3 class="title-3">See what the trip costs</h3>
+            <p class="body">Pick the trip currency once. Every cost shows its symbol, and Itinosu adds up the total for you.</p>
+          </div>
+          <CostsDemo client:visible />
+        </article>
+
+        <article class="feature feature--summary">
+          <div class="feature__text" data-scroll-in>
+            <span class="symbol"><FileSearch size={22} strokeWidth={2} /></span>
+            <h3 class="title-3">A summary for the immigration desk</h3>
+            <p class="body">One clear page with every booking and document. Download it, print it or share it.</p>
+          </div>
+          <SummaryDemo client:visible />
+        </article>
+
+        <article class="feature feature--widgets">
+          <div class="feature__text" data-scroll-in>
+            <span class="symbol"><CircleCheck size={22} strokeWidth={2} /></span>
+            <h3 class="title-3">Only the widgets you need</h3>
+            <p class="body">Choose which widgets each trip uses. Going by train? Leave Flights out.</p>
+          </div>
+          <WidgetsDemo client:visible />
+        </article>
+      </div>
+    </section>
+
+    <!-- 10.06 Devices -->
+    <section id="devices" class="devices wrap">
+      <div class="heading heading--center" data-scroll-in>
+        <p class="eyebrow">On every device</p>
+        <h2 class="section-title">One trip on iPhone, iPad and Mac</h2>
+        <p class="devices__lead">One account and one subscription. Sign in on each device and your trips, files and widgets are there.</p>
+      </div>
+      <div class="device-row">
+        <figure class="device device--iphone" data-scroll-in style="--delay:.15s">
+          <div class="bezel">
+            <picture>
+              <source srcset="/img/iphone-dark.png" media="(prefers-color-scheme: dark)" />
+              <img src="/img/iphone-light.png" width="402" height="874" alt="Itinosu on iPhone: the Kyoto & Osaka trip overview" loading="lazy" />
+            </picture>
+          </div>
+          <figcaption>
+            <span class="title-3">iPhone</span>
+            <span class="body caption--long">Your trip in your pocket, with Home and Lock Screen widgets and a Live Activity on travel days.</span>
+            <span class="body caption--short">Widgets and a Live Activity on travel days.</span>
+          </figcaption>
+        </figure>
+        <figure class="device device--mac" data-scroll-in>
+          <div class="bezel">
+            <picture>
+              <source srcset="/img/mac-dark.png" media="(prefers-color-scheme: dark)" />
+              <img src="/img/mac-light.png" width="1400" height="920" alt="Itinosu on Mac: every trip in the sidebar, the trip overview beside it" loading="lazy" />
+            </picture>
+          </div>
+          <figcaption>
+            <span class="title-3">Mac</span>
+            <span class="body">A native Mac app with a sidebar, menu bar, keyboard shortcuts and desktop widgets.</span>
+          </figcaption>
+        </figure>
+        <figure class="device device--ipad" data-scroll-in style="--delay:.3s">
+          <div class="bezel">
+            <picture>
+              <source srcset="/img/ipad-dark.png" media="(prefers-color-scheme: dark)" />
+              <img src="/img/ipad-light.png" width="1210" height="834" alt="Itinosu on iPad in Split View" loading="lazy" />
+            </picture>
+          </div>
+          <figcaption>
+            <span class="title-3">iPad</span>
+            <span class="body caption--long">Every trip in the sidebar and the trip beside it, in Split View.</span>
+            <span class="body caption--short">Every trip in the sidebar and the trip beside it.</span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- 10.03 Subscription teaser -->
+    <section id="pricing" class="pricing">
+      <div class="wrap pricing__wrap">
+        <div class="trial" data-scroll-in>
+          <p class="eyebrow">Free trial</p>
+          <h2 class="trial__title">Try everything free for 5 days</h2>
+          <ul class="trial__list">
+            {
+              included.map((item, i) => (
+                <li style={`--i:${i}`}>
+                  <svg viewBox="0 0 16 16" width="20" height="20" aria-hidden="true">
+                    <path d={CHECK_FILL} fill="currentColor" fill-rule="evenodd" />
+                  </svg>
+                  <span>{item}</span>
+                </li>
+              ))
+            }
+          </ul>
+          <p class="subhead">Then ₹199 a month or ₹1,499 a year. Cancel anytime in Settings.</p>
+          <div class="trial__notice">
+            <Info size={17} strokeWidth={2} />
+            <p>If you don't subscribe when the trial ends, your trips and their files are removed. You can download your data before then.</p>
+          </div>
+          <div><StoreBadge /></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10.04 Download -->
+    <section class="download wrap" data-scroll-in>
+      <AppIcon size={96} />
+      <h2 class="download__title">Get Itinosu</h2>
+      <p class="body download__lead">For iPhone, iPad and Mac. One purchase, one subscription.</p>
+      <div class="download__badges">
+        <StoreBadge />
+        <StoreBadge store="mac" />
+      </div>
+    </section>
+  </main>
+
+  <!-- 10.05 Footer -->
+  <footer class="footer wrap">
+    <hr />
+    <nav class="footer__links" aria-label="Legal and contact">
+      <a href="/privacy">Privacy Policy</a>
+      <a href="/terms">Terms &amp; Conditions</a>
+      <a href="mailto:itinosu@gmail.com" title="itinosu@gmail.com">Contact</a>
+    </nav>
+    <p class="footer__langs">
+      <a href="/" lang="en">English</a> · <a href="/de/" lang="de">Deutsch</a> · <a href="/ja/" lang="ja">日本語</a> · <a href="/ko/" lang="ko">한국어</a> ·
+      <a href="/zh-hans/" lang="zh-Hans">简体中文</a> · <a href="/zh-hant/" lang="zh-Hant">繁體中文</a>
+    </p>
+    <p class="footer__legal">
+      © 2026 Itinosu. Apple, the Apple logo and App Store are trademarks of Apple Inc., registered in the U.S. and other countries.
+    </p>
+  </footer>
+</Base>
+
+<style>
+  /* ---------- Header ---------- */
+  .header {
+    display: flex;
+    align-items: center;
+    gap: var(--itn-space-24);
+    padding-block: 20px;
+  }
+
+  .brand {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    gap: var(--itn-space-8);
+    text-decoration: none;
+  }
+
+  .brand__name {
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 22px;
+    letter-spacing: -0.43px;
+  }
+
+  .nav {
+    display: flex;
+    gap: var(--itn-space-24);
+  }
+
+  .nav a {
+    font-size: 15px;
+    line-height: 20px;
+    letter-spacing: -0.23px;
+    text-decoration: none;
+  }
+
+  .nav a:hover {
+    color: var(--itn-brand-tint);
+  }
+
+  .get-app {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: var(--itn-space-8) var(--itn-space-16);
+    border-radius: var(--itn-radius-full);
+    background: var(--itn-brand-tint);
+    color: var(--itn-brand-on-tint);
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: -0.23px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background-color 0.15s ease;
+  }
+
+  .get-app:hover {
+    background: var(--itn-brand-tint-pressed);
+  }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    display: flex;
+    align-items: center;
+    gap: 80px;
+    padding-top: 80px;
+    padding-bottom: 96px;
+  }
+
+  .hero__text {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: var(--itn-space-16);
+    min-width: 0;
+  }
+
+  .hero__title {
+    font-size: 56px;
+    font-weight: 700;
+    line-height: 62px;
+    letter-spacing: 0.4px;
+  }
+
+  .hero__lead {
+    font-size: 20px;
+    line-height: 30px;
+    letter-spacing: -0.43px;
+    color: var(--text-secondary);
+  }
+
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--itn-space-16);
+  }
+
+  .hero__visual {
+    flex: none;
+    width: 480px;
+  }
+
+  /* ---------- Features ---------- */
+  .features {
+    display: flex;
+    flex-direction: column;
+    gap: var(--itn-space-32);
+    padding-block: var(--section-y);
+  }
+
+  .heading {
+    display: flex;
+    flex-direction: column;
+    gap: var(--itn-space-8);
+  }
+
+  .heading--center {
+    align-items: center;
+    text-align: center;
+  }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 40px 24px;
+  }
+
+  .feature {
+    display: flex;
+    flex-direction: column;
+    gap: var(--itn-space-12);
+    min-width: 0;
+  }
+
+  .feature__text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--itn-space-12);
+  }
+
+  .symbol {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border-radius: var(--itn-radius-md);
+    background: var(--itn-state-selected-bg);
+    color: var(--itn-brand-tint);
+  }
+
+  .feature :global(.tile-grid) {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--itn-space-12);
+  }
+
+  .feature :global(.tile-grid > div) {
+    display: grid;
+  }
+
+  /* ---------- Devices ---------- */
+  .devices {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+    padding-block: var(--section-y);
+  }
+
+  .devices__lead {
+    font-size: 18px;
+    line-height: 26px;
+    letter-spacing: -0.43px;
+    color: var(--text-secondary);
+  }
+
+  .device-row {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 24px;
+  }
+
+  .device {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    margin: 0;
+  }
+
+  .device img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .device figcaption {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+
+  .caption--short {
+    display: none;
+  }
+
+  .device--iphone {
+    width: 180px;
+  }
+
+  .device--iphone .bezel {
+    width: 130.6px;
+    padding: 5px;
+    border-radius: 22px;
+    background: var(--device-bezel);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+  }
+
+  .device--iphone img {
+    border-radius: 17px;
+  }
+
+  .device--mac {
+    width: 520px;
+  }
+
+  .device--mac .bezel {
+    width: 512px;
+    overflow: hidden;
+    border-radius: 10px;
+    filter: drop-shadow(0 12px 16px rgba(0, 0, 0, 0.18));
+  }
+
+  .device--mac img {
+    aspect-ratio: 512 / 320;
+    object-fit: cover;
+    border-radius: 9px;
+  }
+
+  .device--mac figcaption .body,
+  .device--ipad figcaption .body {
+    max-width: 300px;
+  }
+
+  .device--ipad {
+    width: 360px;
+  }
+
+  .device--ipad .bezel {
+    width: 352.8px;
+    padding: 7px;
+    border-radius: 18px;
+    background: var(--device-bezel);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+  }
+
+  .device--ipad img {
+    aspect-ratio: 338.8 / 233.52;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+  /* ---------- Subscription teaser ---------- */
+  .pricing {
+    padding-block: var(--section-y);
+    background: var(--itn-brand-card);
+  }
+
+  .pricing__wrap {
+    display: flex;
+    justify-content: center;
+  }
+
+  .trial {
+    display: flex;
+    flex-direction: column;
+    gap: var(--itn-space-16);
+    width: 560px;
+    max-width: 100%;
+    padding: var(--itn-space-32);
+    border: 1px solid var(--itn-brand-canvas-line);
+    border-radius: var(--itn-radius-lg);
+    background: var(--itn-brand-canvas);
+  }
+
+  .trial__title {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 28px;
+    letter-spacing: -0.26px;
+  }
+
+  .trial__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--itn-space-12);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .trial__list li {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--itn-space-12);
+    font-size: 17px;
+    line-height: 22px;
+    letter-spacing: -0.43px;
+  }
+
+  .trial__list svg {
+    flex: none;
+    width: 24px;
+    height: 20px;
+    margin-top: 1px;
+    color: var(--itn-brand-tint);
+  }
+
+  /* Ticks come in one after another as the card rises */
+  .trial[data-scroll-in] .trial__list svg {
+    transform: scale(0.6);
+    opacity: 0;
+    transition:
+      transform 0.45s cubic-bezier(0.3, 1.4, 0.5, 1),
+      opacity 0.25s ease;
+    transition-delay: calc(0.35s + var(--i) * 0.09s);
+  }
+
+  .trial.is-in .trial__list svg {
+    transform: none;
+    opacity: 1;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .trial[data-scroll-in] .trial__list svg {
+      transform: none;
+      opacity: 1;
+      transition: none;
+    }
+  }
+
+  .trial__notice {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--itn-space-8);
+    padding: var(--itn-space-12);
+    border-radius: var(--itn-radius-sm);
+    background: var(--itn-feedback-info-bg);
+    color: var(--itn-feedback-info);
+  }
+
+  .trial__notice :global(svg) {
+    flex: none;
+    margin-top: 1px;
+  }
+
+  .trial__notice p {
+    font-size: 13px;
+    line-height: 18px;
+    letter-spacing: -0.08px;
+    color: var(--label-primary);
+  }
+
+  /* ---------- Download ---------- */
+  .download {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--itn-space-16);
+    padding-block: var(--section-y);
+    text-align: center;
+  }
+
+  .download__title {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 28px;
+    letter-spacing: -0.26px;
+  }
+
+  .download__badges {
+    display: flex;
+    gap: 16px;
+  }
+
+  /* ---------- Footer ---------- */
+  .footer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--itn-space-16);
+    padding-block: var(--itn-space-48);
+  }
+
+  .footer hr {
+    width: 100%;
+    height: 1px;
+    margin: 0;
+    border: 0;
+    background: var(--separator-opaque);
+  }
+
+  .footer__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--itn-space-24);
+  }
+
+  .footer__links a {
+    color: var(--itn-brand-tint);
+    font-size: 15px;
+    line-height: 20px;
+    letter-spacing: -0.23px;
+    text-decoration: none;
+  }
+
+  .footer__links a:hover {
+    text-decoration: underline;
+  }
+
+  .footer__langs {
+    font-size: 13px;
+    line-height: 18px;
+    letter-spacing: -0.08px;
+    color: var(--text-secondary);
+  }
+
+  .footer__langs a {
+    text-decoration: none;
+  }
+
+  .footer__legal {
+    font-size: 12px;
+    line-height: 16px;
+    color: var(--text-secondary);
+  }
+
+  /* ================= iPad (834) ================= */
+  @media (max-width: 1279px) {
+    .header {
+      padding-block: 16px;
+    }
+
+    .nav__devices {
+      display: none;
+    }
+
+    .hero {
+      gap: 40px;
+      padding-top: 32px;
+      padding-bottom: 48px;
+    }
+
+    .hero__title {
+      font-size: 34px;
+      line-height: 41px;
+    }
+
+    .hero__lead {
+      font-size: 17px;
+      line-height: 22px;
+    }
+
+    .hero__mac {
+      display: none;
+    }
+
+    .hero__visual {
+      flex: 1;
+      width: auto;
+      max-width: 480px;
+    }
+
+    .devices {
+      gap: 32px;
+    }
+
+    .devices__lead {
+      font-size: 17px;
+      line-height: 22px;
+    }
+
+    .caption--long {
+      display: none;
+    }
+
+    .caption--short {
+      display: inline;
+    }
+
+    /* Mac across the top, iPad and iPhone side by side under it */
+    .device-row {
+      display: grid;
+      grid-template-columns: minmax(0, 501fr) minmax(0, 221fr);
+      align-items: start;
+      gap: 32px 16px;
+      width: 100%;
+    }
+
+    .device {
+      width: 100%;
+      gap: 12px;
+    }
+
+    .device--mac {
+      grid-column: 1 / -1;
+      order: -1;
+    }
+
+    .device--ipad {
+      order: 0;
+    }
+
+    .device--iphone {
+      order: 1;
+    }
+
+    .device--mac .bezel,
+    .device--ipad .bezel,
+    .device--iphone .bezel {
+      width: 100%;
+    }
+
+    .device--iphone .bezel {
+      padding: 4%;
+      border-radius: 17%/8%;
+    }
+
+    .device--iphone img {
+      border-radius: 13%/6%;
+    }
+
+    .device--ipad .bezel {
+      padding: 1.4%;
+      border-radius: 5%/7%;
+    }
+
+    .device--ipad img {
+      border-radius: 3%/4.4%;
+    }
+
+    .device--mac img {
+      aspect-ratio: 738 / 461.25;
+    }
+
+    .device--mac figcaption .body,
+    .device--ipad figcaption .body {
+      max-width: none;
+    }
+  }
+
+  /* ================= iPhone (402 / 375) ================= */
+  @media (max-width: 743px) {
+    .header {
+      padding-block: 12px;
+    }
+
+    .nav {
+      display: none;
+    }
+
+    .hero {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 32px;
+      padding-top: 16px;
+      padding-bottom: 40px;
+    }
+
+    .hero__visual {
+      max-width: none;
+    }
+
+    .feature-grid {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 32px;
+    }
+
+    /* The Figma iPhone order: Flights, Summary, Costs, Widgets */
+    .feature--summary {
+      order: 1;
+    }
+
+    .feature--costs {
+      order: 2;
+    }
+
+    .feature--widgets {
+      order: 3;
+    }
+
+    .device-row {
+      grid-template-columns: minmax(0, 232fr) minmax(0, 106fr);
+    }
+
+    .trial {
+      padding: var(--itn-space-24);
+    }
+
+    .download__badges {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .footer__links {
+      gap: var(--itn-space-12) var(--itn-space-24);
+    }
+  }
+</style>
