@@ -1,0 +1,181 @@
+---
+import { APP_STORE_URL } from '../config'
+import Base from '../layouts/Base.astro'
+import AppIcon from './AppIcon.astro'
+
+// /privacy and /terms: the same JSON the iOS app shows (src/content/legal, copied from the app repo).
+type Block =
+  | { type: 'heading'; text: string }
+  | { type: 'paragraph'; text: string }
+  | { type: 'list'; items: string[] }
+  | { type: 'table'; headers: string[]; rows: string[][] }
+interface Props {
+  document: { title: string; lastUpdated: string; blocks: Block[] }
+  description: string
+}
+const { document, description } = Astro.props
+---
+
+<Base title={`${document.title} — Itinosu`} description={description}>
+  <header class="header wrap">
+    <a class="brand" href="/" aria-label="Itinosu home">
+      <AppIcon size={32} />
+      <span class="brand__name">Itinosu</span>
+    </a>
+    <a class="get-app" href={APP_STORE_URL ?? '/#download'}>{APP_STORE_URL ? 'Get the app' : 'Coming soon'}</a>
+  </header>
+
+  <main class="legal wrap">
+    <h1>{document.title}</h1>
+    <p class="legal__updated">Last updated: {document.lastUpdated}</p>
+    {document.blocks.map((block) => {
+      if (block.type === 'heading') return <h2>{block.text}</h2>
+      if (block.type === 'paragraph') return <p>{block.text}</p>
+      if (block.type === 'list') return <ul>{block.items.map((item) => <li>{item}</li>)}</ul>
+      return (
+        <div class="legal__table">
+          <table>
+            <thead><tr>{block.headers.map((h) => <th scope="col">{h}</th>)}</tr></thead>
+            <tbody>{block.rows.map((row) => <tr>{row.map((cell) => <td>{cell}</td>)}</tr>)}</tbody>
+          </table>
+        </div>
+      )
+    })}
+  </main>
+
+  <footer class="footer wrap">
+    <hr />
+    <nav class="footer__links" aria-label="Legal and contact">
+      <a href="/privacy">Privacy Policy</a>
+      <a href="/terms">Terms &amp; Conditions</a>
+      <a href="mailto:itinosu@gmail.com" title="itinosu@gmail.com">Contact</a>
+    </nav>
+    <p class="footer__legal">
+      © 2026 Itinosu. Apple, the Apple logo and App Store are trademarks of Apple Inc., registered in the U.S. and other countries.
+    </p>
+  </footer>
+</Base>
+
+<style>
+  .header {
+    display: flex;
+    align-items: center;
+    gap: var(--itn-space-24);
+    padding-block: 20px;
+  }
+  .brand {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    gap: var(--itn-space-8);
+    text-decoration: none;
+  }
+  .brand__name {
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 22px;
+    letter-spacing: -0.43px;
+  }
+  .get-app {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: var(--itn-space-8) var(--itn-space-16);
+    border-radius: var(--itn-radius-full);
+    background: var(--itn-brand-tint);
+    color: var(--itn-brand-on-tint);
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .get-app:hover {
+    background: var(--itn-brand-tint-pressed);
+  }
+
+  .legal {
+    max-width: calc(760px + 2 * var(--side));
+    padding-block: var(--itn-space-24) var(--section-y);
+    font-size: 17px;
+    line-height: 1.5;
+  }
+  .legal h1 {
+    font-size: 34px;
+    line-height: 41px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+  }
+  .legal__updated {
+    margin-top: var(--itn-space-8);
+    color: var(--text-secondary);
+    font-size: 15px;
+  }
+  .legal h2 {
+    margin-top: var(--itn-space-32);
+    font-size: 22px;
+    line-height: 28px;
+    font-weight: 700;
+  }
+  .legal p {
+    margin-top: var(--itn-space-12);
+  }
+  .legal ul {
+    margin: var(--itn-space-12) 0 0;
+    padding-left: 1.25em;
+  }
+  .legal li + li {
+    margin-top: var(--itn-space-8);
+  }
+  .legal__table {
+    margin-top: var(--itn-space-16);
+    overflow-x: auto;
+  }
+  .legal table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+    line-height: 20px;
+  }
+  .legal th,
+  .legal td {
+    padding: var(--itn-space-8) var(--itn-space-12);
+    border-bottom: 1px solid var(--separator-opaque);
+    text-align: left;
+    vertical-align: top;
+  }
+  .legal th {
+    font-weight: 600;
+  }
+
+  .footer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--itn-space-16);
+    padding-block: var(--itn-space-48);
+  }
+  .footer hr {
+    width: 100%;
+    height: 1px;
+    margin: 0;
+    border: 0;
+    background: var(--separator-opaque);
+  }
+  .footer__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--itn-space-24);
+  }
+  .footer__links a {
+    color: var(--itn-brand-tint);
+    font-size: 15px;
+    line-height: 20px;
+    text-decoration: none;
+  }
+  .footer__links a:hover {
+    text-decoration: underline;
+  }
+  .footer__legal {
+    font-size: 12px;
+    line-height: 16px;
+    color: var(--text-secondary);
+  }
+</style>

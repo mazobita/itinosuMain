@@ -1,4 +1,5 @@
 ---
+import { APP_STORE_URL, IS_RELEASED } from '../config'
 import Base from '../layouts/Base.astro'
 import AppIcon from '../components/AppIcon.astro'
 import StoreBadge from '../components/StoreBadge.astro'
@@ -12,7 +13,8 @@ import { CircleCheck, CreditCard, FileSearch, Info, Plane } from 'lucide-react'
 // itinosu.com: the public landing page (Figma "10 Landing"). Static HTML;
 // the four stageshow demos hydrate when they scroll into view.
 
-const included = ['Unlimited trips', 'Attach tickets, visas and booking confirmations', 'Photos for every widget', 'Itinosu in 6 languages', 'Download all your data']
+// The trial includes everything except attachments, which are Itinosu Plus only (app decision Z-1).
+const included = ['Unlimited trips', 'Visas, flights, stays, activities, costs and more', 'A trip summary to save as a PDF', 'Download all your data']
 // The checkmark.circle.fill glyph: the stageshow kit's filled "check" path
 const CHECK_FILL = 'M8 1.25a6.75 6.75 0 1 1 0 13.5 6.75 6.75 0 0 1 0-13.5Zm3 4.3-.95-.8-3.3 3.95-1.85-1.8-.85.9 2.8 2.75Z'
 ---
@@ -31,7 +33,7 @@ const CHECK_FILL = 'M8 1.25a6.75 6.75 0 1 1 0 13.5 6.75 6.75 0 0 1 0-13.5Zm3 4.3
       <a class="nav__devices" href="#devices">iPhone, iPad &amp; Mac</a>
       <a href="#pricing">Pricing</a>
     </nav>
-    <a class="get-app" href="https://apps.apple.com/app/itinosu">Get the app</a>
+    <a class="get-app" href={APP_STORE_URL ?? '/#download'}>{APP_STORE_URL ? 'Get the app' : 'Coming soon'}</a>
   </header>
 
   <main>
@@ -156,7 +158,7 @@ const CHECK_FILL = 'M8 1.25a6.75 6.75 0 1 1 0 13.5 6.75 6.75 0 0 1 0-13.5Zm3 4.3
       <div class="wrap pricing__wrap">
         <div class="trial" data-scroll-in>
           <p class="eyebrow">Free trial</p>
-          <h2 class="trial__title">Try everything free for 5 days</h2>
+          <h2 class="trial__title">Try Itinosu free for 5 days</h2>
           <ul class="trial__list">
             {
               included.map((item, i) => (
@@ -169,10 +171,10 @@ const CHECK_FILL = 'M8 1.25a6.75 6.75 0 1 1 0 13.5 6.75 6.75 0 0 1 0-13.5Zm3 4.3
               ))
             }
           </ul>
-          <p class="subhead">Then ₹199 a month or ₹1,499 a year. Cancel anytime in Settings.</p>
+          <p class="subhead">Then Itinosu Plus for ₹199 a month or ₹1,499 a year, which also lets you attach tickets, visas and booking confirmations. Cancel anytime in Settings.</p>
           <div class="trial__notice">
             <Info size={17} strokeWidth={2} />
-            <p>If you don't subscribe when the trial ends, your trips and their files are removed. You can download your data before then.</p>
+            <p>If you don't subscribe when the trial ends, you can still see your trips but not change them, and 7 days later your trips and their files are removed. You can download your data until then.</p>
           </div>
           <div><StoreBadge /></div>
         </div>
@@ -180,10 +182,10 @@ const CHECK_FILL = 'M8 1.25a6.75 6.75 0 1 1 0 13.5 6.75 6.75 0 0 1 0-13.5Zm3 4.3
     </section>
 
     <!-- 10.04 Download -->
-    <section class="download wrap" data-scroll-in>
+    <section id="download" class="download wrap" data-scroll-in>
       <AppIcon size={96} />
-      <h2 class="download__title">Get Itinosu</h2>
-      <p class="body download__lead">For iPhone, iPad and Mac. One purchase, one subscription.</p>
+      <h2 class="download__title">{IS_RELEASED ? 'Get Itinosu' : 'Itinosu is coming soon'}</h2>
+      <p class="body download__lead">For iPhone, iPad and Mac{IS_RELEASED ? '' : ', on the App Store'}. One purchase, one subscription.</p>
       <div class="download__badges">
         <StoreBadge />
         <StoreBadge store="mac" />
@@ -199,10 +201,6 @@ const CHECK_FILL = 'M8 1.25a6.75 6.75 0 1 1 0 13.5 6.75 6.75 0 0 1 0-13.5Zm3 4.3
       <a href="/terms">Terms &amp; Conditions</a>
       <a href="mailto:itinosu@gmail.com" title="itinosu@gmail.com">Contact</a>
     </nav>
-    <p class="footer__langs">
-      <a href="/" lang="en">English</a> · <a href="/de/" lang="de">Deutsch</a> · <a href="/ja/" lang="ja">日本語</a> · <a href="/ko/" lang="ko">한국어</a> ·
-      <a href="/zh-hans/" lang="zh-Hans">简体中文</a> · <a href="/zh-hant/" lang="zh-Hant">繁體中文</a>
-    </p>
     <p class="footer__legal">
       © 2026 Itinosu. Apple, the Apple logo and App Store are trademarks of Apple Inc., registered in the U.S. and other countries.
     </p>
@@ -630,17 +628,6 @@ const CHECK_FILL = 'M8 1.25a6.75 6.75 0 1 1 0 13.5 6.75 6.75 0 0 1 0-13.5Zm3 4.3
 
   .footer__links a:hover {
     text-decoration: underline;
-  }
-
-  .footer__langs {
-    font-size: 13px;
-    line-height: 18px;
-    letter-spacing: -0.08px;
-    color: var(--text-secondary);
-  }
-
-  .footer__langs a {
-    text-decoration: none;
   }
 
   .footer__legal {

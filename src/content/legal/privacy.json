@@ -1,0 +1,249 @@
+{
+ "title": "Privacy Policy",
+ "lastUpdated": "22nd Nov 2026",
+ "blocks": [
+  {
+   "type": "paragraph",
+   "text": "This policy explains what Itinosu collects, why, who handles it, how long we keep it and what you can do about it. It covers the Itinosu app on iPhone, iPad and Mac."
+  },
+  {
+   "type": "paragraph",
+   "text": "Itinosu Privacy Policy. Effective 22nd Nov 2026. Version 2."
+  },
+  {
+   "type": "heading",
+   "text": "In short"
+  },
+  {
+   "type": "list",
+   "items": [
+    "We collect only what Itinosu needs: your account details, the travel information you choose to enter, and your subscription status.",
+    "Your trips and documents are private to your account. We do not sell your data, use it for advertising, or track you across other apps and websites.",
+    "No data is sent to AI providers. Your trip summary and PDFs are built on your device from what you entered.",
+    "Payments are handled by Apple. We never see your card or bank details.",
+    "You can download your data or delete your account yourself, in Settings.",
+    "Your data is stored with Supabase in South Korea."
+   ]
+  },
+  {
+   "type": "heading",
+   "text": "1. Who is responsible"
+  },
+  {
+   "type": "paragraph",
+   "text": "Itinosu is a personal project by one independent developer based in India, who is the data fiduciary (the person who decides how your data is used) for Itinosu. The developer's name is shown as the seller on Itinosu's App Store page. Contact and grievance officer: itinosu@gmail.com."
+  },
+  {
+   "type": "heading",
+   "text": "2. What we collect"
+  },
+  {
+   "type": "table",
+   "headers": [
+    "Category",
+    "What",
+    "Where it comes from"
+   ],
+   "rows": [
+    [
+     "Account",
+     "Name, email address, date of birth, profile photo (optional), password (stored only as a one-way hash by our sign-in provider), the date you accepted these terms",
+     "You"
+    ],
+    [
+     "Sign in with Apple or Google",
+     "The account identifier, email and (if you share it) name that the provider gives us. With Apple's Hide My Email we only get a relay address",
+     "That provider, at your request"
+    ],
+    [
+     "Trips and entries",
+     "Trip name, destination, dates, currency, description; visa, flight, insurance, stay, place, activity, transport, rental and expense details; costs; notes; links; hotel and provider phone numbers",
+     "You"
+    ],
+    [
+     "Files",
+     "Cover photos, and attachments such as boarding passes, visa documents and policy files (PDF, JPG, PNG, HEIC/HEIF)",
+     "You"
+    ],
+    [
+     "Subscription",
+     "Whether you are on the trial or Itinosu Plus, when the trial ends, the plan you bought, its renewal or end date, payment-retry and refund status, and the App Store's transaction identifiers for your purchase",
+     "Apple's App Store, and us"
+    ],
+    [
+     "Feedback",
+     "What you write when you send feedback by email, your email address, and device details (system version, device model, app version) only if you leave that switch on",
+     "You"
+    ],
+    [
+     "Technical data",
+     "IP address and request logs kept by our database provider for security and troubleshooting",
+     "Your device"
+    ]
+   ]
+  },
+  {
+   "type": "paragraph",
+   "text": "We do not ask for passport or ID numbers as fields. Documents you upload may still contain them, so upload only what you need."
+  },
+  {
+   "type": "paragraph",
+   "text": "We do not collect precise location, contacts, photos you don't choose, health data, browsing history or advertising identifiers, and Itinosu contains no analytics or advertising code."
+  },
+  {
+   "type": "heading",
+   "text": "3. What stays on your device"
+  },
+  {
+   "type": "list",
+   "items": [
+    "Your sign-in session is kept in your device's Keychain and removed when you sign out.",
+    "A copy of your trips is kept on your device so the app opens quickly; it is protected by your device's encryption and removed when you sign out.",
+    "Reminders (for example hotel check-in and trial reminders) are scheduled on your device by the app. They contain no confidential details beyond the stay's name.",
+    "Home Screen and desktop widgets and Live Activities read a small summary (trip name, dates and upcoming items) kept on your device. It is not sent to us.",
+    "Download Your Data and the Summary PDF are created on your device and only leave it if you save or share them."
+   ]
+  },
+  {
+   "type": "heading",
+   "text": "4. Why we use it"
+  },
+  {
+   "type": "list",
+   "items": [
+    "To create and secure your account and sign you in.",
+    "To store, sync and show your trips on your devices, and to build your summary and downloads.",
+    "To check that you are 18 or older.",
+    "To provide the free trial and Itinosu Plus: to verify purchases with Apple, keep your subscription status up to date, and restrict and later delete trip data when a trial or plan ends, as described in our Terms.",
+    "To send service messages such as email confirmation and password reset.",
+    "To keep Itinosu secure, fix problems and prevent abuse.",
+    "To answer your feedback and requests."
+   ]
+  },
+  {
+   "type": "paragraph",
+   "text": "We rely on your consent, given when you tick the box and create your account, and on uses the law allows without consent, such as meeting legal obligations. You can withdraw consent by deleting your account."
+  },
+  {
+   "type": "heading",
+   "text": "5. Who handles your data"
+  },
+  {
+   "type": "paragraph",
+   "text": "We do not sell or rent your data. We share it only with providers that run Itinosu for us, under their own terms:"
+  },
+  {
+   "type": "table",
+   "headers": [
+    "Provider",
+    "Role",
+    "Location"
+   ],
+   "rows": [
+    [
+     "Supabase",
+     "Sign-in, database, private file storage and server functions",
+     "South Korea (Seoul region)"
+    ],
+    [
+     "Apple",
+     "Sign in with Apple, only if you use it; App Store payments, and the status of your subscription, which Apple sends to our server",
+     "Per Apple's privacy policy"
+    ],
+    [
+     "Google",
+     "Sign-in, only if you choose to sign in with Google; our support mailbox (Gmail) receives the feedback emails you send",
+     "Per Google's privacy policy"
+    ]
+   ]
+  },
+  {
+   "type": "paragraph",
+   "text": "We may also disclose data if the law or a court requires it, or to protect rights and safety, and to a successor if Itinosu is transferred, with notice to you."
+  },
+  {
+   "type": "paragraph",
+   "text": "Itinosu does not use analytics or advertising trackers, and does not send your trip data to any AI or third-party model. If that ever changes, we will update this policy and ask you first."
+  },
+  {
+   "type": "heading",
+   "text": "6. Moving data across borders"
+  },
+  {
+   "type": "paragraph",
+   "text": "Your data is stored in South Korea and may be handled by providers in other countries. We choose providers that protect data, and we do not transfer it to any country the Indian government restricts."
+  },
+  {
+   "type": "heading",
+   "text": "7. How long we keep it"
+  },
+  {
+   "type": "list",
+   "items": [
+    "While your account is open: your account details, trips, files and subscription status.",
+    "When you delete a trip, an entry or your account: it is deleted from our database and storage immediately and permanently. Copies in our provider's encrypted backups expire within 7 days.",
+    "If you used Sign in with Apple, deleting your account also revokes Itinosu's access to your Apple Account.",
+    "If a trial or subscription ends without a purchase: your trips, entries and files are deleted 7 days later, after reminders. We keep a minimal record of that deletion (account identifier, dates and counts, no trip content) to show it was done correctly.",
+    "Feedback emails: kept in our support mailbox for as long as needed to answer them and follow up."
+   ]
+  },
+  {
+   "type": "heading",
+   "text": "8. How we protect it"
+  },
+  {
+   "type": "list",
+   "items": [
+    "Traffic is encrypted in transit (HTTPS).",
+    "Each account can read and change only its own data, enforced in the database, not just in the app.",
+    "Files are in private storage and opened only through short-lived signed links.",
+    "Our providers encrypt stored data at rest, and data on your device is protected by your device's encryption.",
+    "Purchases are verified with Apple on our server; the app never decides your subscription status by itself."
+   ]
+  },
+  {
+   "type": "paragraph",
+   "text": "No system is perfectly secure. If a breach affects your data, we will notify you and the authorities as the law requires."
+  },
+  {
+   "type": "heading",
+   "text": "9. Your rights and choices"
+  },
+  {
+   "type": "list",
+   "items": [
+    "See and correct: edit your name, date of birth and photo in Settings, or ask us at itinosu@gmail.com for a summary of the data we hold or to correct your email.",
+    "Download: Settings › Download Your Data gives you everything as a ZIP file.",
+    "Delete: delete trips, entries or your account in the app, or ask us.",
+    "Withdraw consent: delete your account, or write to us.",
+    "Notifications: turn reminders off in the app or in your device's settings.",
+    "Nominate: you may nominate another person to exercise your rights if you die or cannot act for yourself.",
+    "Complain: write to our grievance contact first. You may then complain to the Data Protection Board of India where the law gives you that right. If you are in the EU or UK, you also have GDPR rights, including a complaint to your local authority."
+   ]
+  },
+  {
+   "type": "heading",
+   "text": "10. Children"
+  },
+  {
+   "type": "paragraph",
+   "text": "Itinosu is for adults aged 18 and over. We do not knowingly collect data from anyone under 18, and we delete such accounts when found."
+  },
+  {
+   "type": "heading",
+   "text": "11. Changes to this policy"
+  },
+  {
+   "type": "paragraph",
+   "text": "We will post updates in the app and on our website with a new effective date and version. For material changes we will notify you in the app or by email and, where the law requires, ask for your consent again."
+  },
+  {
+   "type": "heading",
+   "text": "12. Contact"
+  },
+  {
+   "type": "paragraph",
+   "text": "itinosu@gmail.com · Itinosu's developer, India."
+  }
+ ]
+}

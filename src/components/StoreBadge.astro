@@ -5,10 +5,18 @@
 interface Props {
   store?: 'app' | 'mac'
 }
+import { APP_STORE_URL } from '../config'
 const { store = 'app' } = Astro.props
-const APP_STORE_URL = 'https://apps.apple.com/app/itinosu'
+const storeName = store === 'mac' ? 'Mac App Store' : 'App Store'
 ---
 
+{APP_STORE_URL === null ? (
+  // Before release: a plain label, not a link and not Apple's badge (the badge may only link to a live product).
+  <p class="store-soon">
+    <span class="store-soon__small">Coming soon to the</span>
+    <span class="store-soon__big">{storeName}</span>
+  </p>
+) : (
 <a class="store-badge" href={APP_STORE_URL} aria-label={store === 'mac' ? 'Download on the Mac App Store' : 'Download on the App Store'}>
   <span class="store-badge__logo" aria-hidden="true">{"\uF8FF"}</span>
   <span class="store-badge__label">
@@ -16,8 +24,34 @@ const APP_STORE_URL = 'https://apps.apple.com/app/itinosu'
     <span class="store-badge__big">{store === 'mac' ? 'Mac App Store' : 'App Store'}</span>
   </span>
 </a>
+)}
 
 <style>
+  .store-soon {
+    display: inline-flex;
+    flex: none;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 48px;
+    padding: var(--itn-space-8) var(--itn-space-16);
+    border: 1px dashed var(--itn-brand-tint);
+    border-radius: var(--itn-radius-sm);
+    color: var(--itn-brand-tint);
+    white-space: nowrap;
+  }
+
+  .store-soon__small {
+    font-size: 11px;
+    line-height: 13px;
+  }
+
+  .store-soon__big {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 25px;
+    letter-spacing: -0.45px;
+  }
+
   .store-badge {
     display: inline-flex;
     flex: none;
