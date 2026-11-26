@@ -53,7 +53,7 @@ const CHECK_FILL = 'M8 1.25a6.75 6.75 0 1 1 0 13.5 6.75 6.75 0 0 1 0-13.5Zm3 4.3
         </div>
       </div>
       <div class="hero__visual">
-        <HeroDemo client:visible />
+        <HeroDemo client:load />
       </div>
     </section>
 
@@ -81,7 +81,7 @@ const CHECK_FILL = 'M8 1.25a6.75 6.75 0 1 1 0 13.5 6.75 6.75 0 0 1 0-13.5Zm3 4.3
             <h3 class="title-3">See what the trip costs</h3>
             <p class="body">Pick the trip currency once. Every cost shows its symbol, and Itinosu adds up the total for you.</p>
           </div>
-          <CostsDemo client:visible />
+          <CostsDemo client:visible={{ rootMargin: "400px" }} />
         </article>
 
         <article class="feature feature--summary">
@@ -90,7 +90,7 @@ const CHECK_FILL = 'M8 1.25a6.75 6.75 0 1 1 0 13.5 6.75 6.75 0 0 1 0-13.5Zm3 4.3
             <h3 class="title-3">A summary for the immigration desk</h3>
             <p class="body">One clear page with every booking and document. Download it, print it or share it.</p>
           </div>
-          <SummaryDemo client:visible />
+          <SummaryDemo client:visible={{ rootMargin: "400px" }} />
         </article>
 
         <article class="feature feature--widgets">
@@ -99,7 +99,7 @@ const CHECK_FILL = 'M8 1.25a6.75 6.75 0 1 1 0 13.5 6.75 6.75 0 0 1 0-13.5Zm3 4.3
             <h3 class="title-3">Only the widgets you need</h3>
             <p class="body">Choose which widgets each trip uses. Going by train? Leave Flights out.</p>
           </div>
-          <WidgetsDemo client:visible />
+          <WidgetsDemo client:visible={{ rootMargin: "400px" }} />
         </article>
       </div>
     </section>

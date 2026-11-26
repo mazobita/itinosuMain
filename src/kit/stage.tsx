@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from 'react'
+import { useCallback, useEffect, useId, useLayoutEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from 'react'
 import './stage.css'
 import { checkSeam, createAct, Stopped, type Script } from './act'
 import { Cursor, ripple as spawnRipple, type CursorKind, type CursorStyle } from './cursor'
@@ -138,6 +138,13 @@ export function Stage<S extends object>({
   const stateRef = useRef(state)
   stateRef.current = state
   const [scale, setScale] = useState(1)
+  // False until the first measure. Until then (the server render, and an
+  // island that hasn't hydrated yet) CSS sizes and scales the stage from its
+  // container, so the box doesn't jump or overflow the page when JS arrives.
+  const [fitted, setFitted] = useState(false)
+  // A plain token: React escapes quotes and > in <style> text, so the scoped
+  // rule below uses an unquoted attribute selector and a descendant combinator
+  const fitId = 'f' + useId().replace(/[^a-zA-Z0-9]/g, '')
   const scaleRef = useRef(1)
   scaleRef.current = scale
   // film.mjs can slow every stage down (--slow) and film any stage dark (--dark)
@@ -189,6 +196,7 @@ export function Stage<S extends object>({
       // A design narrower than its box (a compact layout, or a stage that has
       // stopped at its design size) sits in the middle of it, not at its left
       setInset(Math.max(0, (w - dw * s) / 2))
+      setFitted(true)
     }
     measure()
     const ro = new ResizeObserver(measure)
@@ -568,10 +576,25 @@ export function Stage<S extends object>({
   const showCursor = cursor && (!script || !still || cursor.still)
 
   return (
-    <div ref={fitRef} className={`ss-fit${className ? ` ${className}` : ''}`} style={{ maxWidth: grows ? undefined : width, height: designH * scale }}>
+    <div
+      ref={fitRef}
+      className={`ss-fit${className ? ` ${className}` : ''}`}
+      data-ss-fit={fitId}
+      data-fitted={fitted || undefined}
+      style={
+        fitted
+          ? { maxWidth: grows ? undefined : width, height: designH * scale }
+          : ({ maxWidth: fillProp ? undefined : width, ['--ss-w' as string]: width, ['--ss-h' as string]: height } as CSSProperties)
+      }
+    >
+      {!fitted && compact && (
+        // Before the first measure: the compact box below its breakpoint
+        <style>{`@container (max-width: ${compact.below - 0.02}px) { [data-ss-fit=${fitId}]:not([data-fitted]) .ss-fit-pre { --ss-w: ${compact.width}; --ss-h: ${compact.height}; } }`}</style>
+      )}
+      {!fitted && <div className="ss-fit-spacer ss-fit-pre" aria-hidden />}
       <div
         ref={rootRef}
-        className="ss-stage"
+        className={fitted ? 'ss-stage' : 'ss-stage ss-fit-pre'}
         data-specimen={specimen || undefined}
         data-unframed={unframed || undefined}
         data-still={still || undefined}
@@ -585,7 +608,7 @@ export function Stage<S extends object>({
           width: designW,
           height: designH,
           marginLeft: inset || undefined,
-          transform: `scale(${scale})`,
+          transform: fitted ? `scale(${scale})` : undefined,
           ...tokens,
           ...(accent ? { ['--ss-accent' as string]: accent, ['--ss-accent-2' as string]: accent, ['--ss-accent-soft' as string]: `color-mix(in srgb, ${accent} 14%, transparent)` } : null),
         }}

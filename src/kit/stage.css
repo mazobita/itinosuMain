@@ -15,6 +15,28 @@
     margin-inline: auto;
   }
 
+  /* Before the first measure (server render, island not hydrated yet): size
+     the box and scale the stage from the container width in CSS, the same
+     math as Stage's measure, so nothing jumps or overflows the page when JS
+     takes over. --ss-w/--ss-h are the design size (the compact one below its
+     breakpoint, set by Stage's scoped <style>). */
+  .ss-fit:not([data-fitted]) {
+    container-type: inline-size;
+    overflow: hidden;
+    overflow: clip;
+  }
+
+  .ss-fit-spacer {
+    height: calc(min(100cqw, var(--ss-w) * 1px) * var(--ss-h) / var(--ss-w));
+  }
+
+  .ss-fit:not([data-fitted]) > .ss-stage {
+    width: calc(var(--ss-w) * 1px) !important;
+    height: calc(var(--ss-h) * 1px) !important;
+    margin-left: max(0px, (100cqw - var(--ss-w) * 1px) / 2) !important;
+    transform: scale(tan(atan2(min(100cqw, var(--ss-w) * 1px), var(--ss-w) * 1px)));
+  }
+
   .ss-stage {
     /* Surfaces */
     --ss-canvas: #f6f5f4;
