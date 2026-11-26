@@ -1,6 +1,6 @@
 {
  "title": "Terms & Conditions",
- "lastUpdated": "22nd Nov 2026",
+ "lastUpdated": "25th Nov 2026",
  "blocks": [
   {
    "type": "paragraph",
@@ -66,7 +66,7 @@
     "You own your content. We do not claim ownership of it.",
     "You give us a limited licence to store, process and display your content only to run Itinosu for you, for example to show it back to you on your devices and to build your summary and downloads.",
     "Only upload what you have the right to upload, and only what you need: avoid documents or ID numbers that are not required for your trip.",
-    "Attachments must be PDF, JPG, PNG or HEIC/HEIF, up to 10 MB per file and 5 files per entry. We may change these limits.",
+    "Attachments must be PDF, JPG, PNG or HEIC/HEIF, up to 2 MB per file and 5 files per entry. We may change these limits.",
     "Your content is private to your account. We do not use it for advertising and do not sell it."
    ]
   },
@@ -101,7 +101,7 @@
   },
   {
    "type": "paragraph",
-   "text": "Itinosu Plus is an optional paid subscription. It currently includes unlimited trips, attachments up to 10 MB each and custom cover photos. It is offered as a yearly or a monthly auto-renewing subscription. The price, the length of each period and what is included are shown in the app before you buy. Which features belong to Plus can change; we will tell you in the app before a change affects what you have paid for."
+   "text": "Itinosu Plus is an optional paid subscription. It currently includes unlimited trips, attachments up to 2 MB each and custom cover photos. It is offered as a yearly or a monthly auto-renewing subscription. The price, the length of each period and what is included are shown in the app before you buy. Which features belong to Plus can change; we will tell you in the app before a change affects what you have paid for."
   },
   {
    "type": "list",
